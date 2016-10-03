@@ -1,0 +1,29 @@
+﻿@model Models.ContactUsViewModel
+@{
+    ViewBag.Title = Resources.PageTitles.ContactUs;
+}
+@using EmployeeManagementProject.App_LocalResources
+
+<h3 class="text-primary">@ContactUs.OfficeInfo</h3>
+<br/>
+@foreach (var item in Model.OfficeCombo)
+{
+  <h4 class="text-primary"> @Html.DisplayFor(modelItem => item.Address), Phone: @Html.DisplayFor(modelItem => item.Phone)</h4>
+}
+<h4 class="text-success">@TempData["message"]</h4>
+<h3 class="text-primary">@ContactUs.Inquiry</h3>
+@using(Html.BeginForm("PostInquiry", "Home",FormMethod.Post))
+{
+<div>
+<label class="text-info">Name</label>
+    @Html.TextBoxFor(m => m.EmailCombo.Name,new { style="position:absolute; left:100px"})<br/><br/>
+<label class="text-info">EmailID </label>
+    @Html.TextBoxFor(m => m.EmailCombo.MailID, new { style = "position:absolute; left:100px" })<br/><br/>
+<label class="text-info">Type </label>
+    @Html.DropDownListFor(m => m.EmailCombo.Type,Model.EmailCombo.TypeDropDown,new { style="position:absolute; left:100px"})<br/><br/>
+<label class="text-info">Inquiry </label>
+    @Html.TextAreaFor(m => m.EmailCombo.Question, new { style = "position:absolute; left:100px" })<br /><br /><br />
+<input type="submit" value="Submit Inquiry"></input>
+</div>
+}
+

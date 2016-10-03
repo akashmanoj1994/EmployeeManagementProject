@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Models.ModificationViewModel>
+
+@{
+    ViewBag.Title = "ModificationList";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ModificationList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LogNumber)
+        </th>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdminName) ( @Html.DisplayFor(modelItem => item.AdminID) )
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Action)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeName) ( @Html.DisplayFor(modelItem => item.EmployeeID) )
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+    </tr>
+}
+
+</table>

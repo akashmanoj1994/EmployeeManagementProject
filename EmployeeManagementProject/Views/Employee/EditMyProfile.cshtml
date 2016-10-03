@@ -1,0 +1,39 @@
+﻿@model Models.EditEmployeeSelfViewModel
+@{
+    ViewBag.Title = "EditMyProfile";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+@{
+    List<SelectListItem> CntryList = Model.CountryList;
+}
+<h2 class="text-primary">Edit Details</h2>
+<h3 class="text-success">@TempData["editedmessage"]</h3>
+@using (Html.BeginForm("PostEditMyProfile", "Employee", FormMethod.Post))
+{
+    <div class="text-info">
+        Name
+        @Html.TextBoxFor(m => m.Name, new { style = "position:absolute; left:150px" })
+        <br />
+
+        EmailID
+        @Html.DisplayFor(m => m.EmailID, new { style = "position:absolute; left:150px" })
+        <br />
+
+        City
+        @Html.TextBoxFor(m => m.City, new { style = "position:absolute; left:150px" })
+        <br />
+
+        Country
+        @Html.DropDownListFor(m => m.Country, CntryList, new { style = "position:absolute; left:150px" })
+        <br />
+
+        PhoneNumber
+        @Html.TextBoxFor(m => m.Phone, new { style = "position:absolute; left:150px" })
+        <br />
+
+        <input type="submit" value="Save" />
+
+    </div>
+}
+

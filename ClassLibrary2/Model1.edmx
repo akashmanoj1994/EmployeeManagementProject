@@ -1,0 +1,630 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EmployeeManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="a_Country">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="CountryCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="a_DepartmentDetails">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="a_Designation">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DesignationName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="a_OfficeDetails">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeDetailsOfficial">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Designation" Type="int" Nullable="false" />
+          <Property Name="DepartmentCode" Type="int" Nullable="false" />
+          <Property Name="EmailID" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="OfficeCode" Type="int" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeDetailsPersonal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="20" />
+          <Property Name="Country" Type="int" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Salary" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>
+        <EntityType Name="ModificationInfo">
+          <Key>
+            <PropertyRef Name="LogNumber" />
+          </Key>
+          <Property Name="LogNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminID" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="Action" Type="varchar" MaxLength="20" />
+          <Property Name="ActionDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="RandomKey">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="RandomKeyValue" Type="int" />
+        </EntityType>
+        <Association Name="FK__EmployeeD__Count__20C1E124">
+          <End Role="a_Country" Type="Self.a_Country" Multiplicity="0..1" />
+          <End Role="EmployeeDetailsPersonal" Type="Self.EmployeeDetailsPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="a_Country">
+              <PropertyRef Name="CountryCode" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsPersonal">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Depar__1CF15040">
+          <End Role="a_DepartmentDetails" Type="Self.a_DepartmentDetails" Multiplicity="1" />
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="a_DepartmentDetails">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="DepartmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Desig__1BFD2C07">
+          <End Role="a_Designation" Type="Self.a_Designation" Multiplicity="1" />
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="a_Designation">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="Designation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Emplo__21B6055D">
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="0..1" />
+          <End Role="EmployeeDetailsPersonal" Type="Self.EmployeeDetailsPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsPersonal">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Offic__1DE57479">
+          <End Role="a_OfficeDetails" Type="Self.a_OfficeDetails" Multiplicity="1" />
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="a_OfficeDetails">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="OfficeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RandomKey__Emplo__5CD6CB2B">
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="0..1" />
+          <End Role="RandomKey" Type="Self.RandomKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="RandomKey">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddModificationInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+          <Parameter Name="AdminID" Type="int" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+          <Parameter Name="ActionDate" Type="smalldatetime" Mode="In" />
+        </Function>
+        <Function Name="AddNewEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Designation" Type="int" Mode="In" />
+          <Parameter Name="Department" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+          <Parameter Name="Office" Type="int" Mode="In" />
+          <Parameter Name="Admin" Type="bit" Mode="In" />
+          <Parameter Name="Active" Type="bit" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="int" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="Salary" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddNewEmployeeDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Designation" Type="int" Mode="In" />
+          <Parameter Name="Department" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+          <Parameter Name="Office" Type="int" Mode="In" />
+          <Parameter Name="Admin" Type="bit" Mode="In" />
+          <Parameter Name="Active" Type="bit" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="int" Mode="In" />
+          <Parameter Name="Phone" Type="varchar" Mode="In" />
+          <Parameter Name="Salary" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EmailAvailability" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mailid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NameAvailability" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="EmployeeManagementModelStoreContainer">
+          <EntitySet Name="a_Country" EntityType="Self.a_Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="a_DepartmentDetails" EntityType="Self.a_DepartmentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="a_Designation" EntityType="Self.a_Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="a_OfficeDetails" EntityType="Self.a_OfficeDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeDetailsOfficial" EntityType="Self.EmployeeDetailsOfficial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeDetailsPersonal" EntityType="Self.EmployeeDetailsPersonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModificationInfo" EntityType="Self.ModificationInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RandomKey" EntityType="Self.RandomKey" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EmployeeD__Count__20C1E124" Association="Self.FK__EmployeeD__Count__20C1E124">
+            <End Role="a_Country" EntitySet="a_Country" />
+            <End Role="EmployeeDetailsPersonal" EntitySet="EmployeeDetailsPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Depar__1CF15040" Association="Self.FK__EmployeeD__Depar__1CF15040">
+            <End Role="a_DepartmentDetails" EntitySet="a_DepartmentDetails" />
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficial" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Desig__1BFD2C07" Association="Self.FK__EmployeeD__Desig__1BFD2C07">
+            <End Role="a_Designation" EntitySet="a_Designation" />
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficial" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Emplo__21B6055D" Association="Self.FK__EmployeeD__Emplo__21B6055D">
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficial" />
+            <End Role="EmployeeDetailsPersonal" EntitySet="EmployeeDetailsPersonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Offic__1DE57479" Association="Self.FK__EmployeeD__Offic__1DE57479">
+            <End Role="a_OfficeDetails" EntitySet="a_OfficeDetails" />
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficial" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RandomKey__Emplo__5CD6CB2B" Association="Self.FK__RandomKey__Emplo__5CD6CB2B">
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficial" />
+            <End Role="RandomKey" EntitySet="RandomKey" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeeManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="a_Country">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="CountryCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmployeeDetailsPersonals" Relationship="Self.FK__EmployeeD__Count__20C1E124" FromRole="a_Country" ToRole="EmployeeDetailsPersonal" />
+        </EntityType>
+        <EntityType Name="a_DepartmentDetails">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmployeeDetailsOfficials" Relationship="Self.FK__EmployeeD__Depar__1CF15040" FromRole="a_DepartmentDetails" ToRole="EmployeeDetailsOfficial" />
+        </EntityType>
+        <EntityType Name="a_Designation">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DesignationName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmployeeDetailsOfficials" Relationship="Self.FK__EmployeeD__Desig__1BFD2C07" FromRole="a_Designation" ToRole="EmployeeDetailsOfficial" />
+        </EntityType>
+        <EntityType Name="a_OfficeDetails">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EmployeeDetailsOfficials" Relationship="Self.FK__EmployeeD__Offic__1DE57479" FromRole="a_OfficeDetails" ToRole="EmployeeDetailsOfficial" />
+        </EntityType>
+        <EntityType Name="EmployeeDetailsOfficial">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Designation" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentCode" Type="Int32" Nullable="false" />
+          <Property Name="EmailID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OfficeCode" Type="Int32" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="a_DepartmentDetails" Relationship="Self.FK__EmployeeD__Depar__1CF15040" FromRole="EmployeeDetailsOfficial" ToRole="a_DepartmentDetails" />
+          <NavigationProperty Name="a_Designation" Relationship="Self.FK__EmployeeD__Desig__1BFD2C07" FromRole="EmployeeDetailsOfficial" ToRole="a_Designation" />
+          <NavigationProperty Name="a_OfficeDetails" Relationship="Self.FK__EmployeeD__Offic__1DE57479" FromRole="EmployeeDetailsOfficial" ToRole="a_OfficeDetails" />
+          <NavigationProperty Name="EmployeeDetailsPersonals" Relationship="Self.FK__EmployeeD__Emplo__21B6055D" FromRole="EmployeeDetailsOfficial" ToRole="EmployeeDetailsPersonal" />
+          <NavigationProperty Name="ModificationInfoes" Relationship="Self.FK__Modificat__Admin__25869641" FromRole="EmployeeDetailsOfficial" ToRole="ModificationInfo" />
+          <NavigationProperty Name="ModificationInfoes1" Relationship="Self.FK__Modificat__Emplo__267ABA7A" FromRole="EmployeeDetailsOfficial" ToRole="ModificationInfo" />
+          <NavigationProperty Name="RandomKeys" Relationship="Self.FK__RandomKey__Emplo__5CD6CB2B" FromRole="EmployeeDetailsOfficial" ToRole="RandomKey" />
+        </EntityType>
+        <EntityType Name="EmployeeDetailsPersonal">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="a_Country" Relationship="Self.FK__EmployeeD__Count__20C1E124" FromRole="EmployeeDetailsPersonal" ToRole="a_Country" />
+          <NavigationProperty Name="EmployeeDetailsOfficial" Relationship="Self.FK__EmployeeD__Emplo__21B6055D" FromRole="EmployeeDetailsPersonal" ToRole="EmployeeDetailsOfficial" />
+        </EntityType>
+        <EntityType Name="ModificationInfo">
+          <Key>
+            <PropertyRef Name="LogNumber" />
+          </Key>
+          <Property Name="LogNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="Action" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ActionDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="EmployeeDetailsOfficial" Relationship="Self.FK__Modificat__Admin__25869641" FromRole="ModificationInfo" ToRole="EmployeeDetailsOfficial" />
+          <NavigationProperty Name="EmployeeDetailsOfficial1" Relationship="Self.FK__Modificat__Emplo__267ABA7A" FromRole="ModificationInfo" ToRole="EmployeeDetailsOfficial" />
+        </EntityType>
+        <EntityType Name="RandomKey">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="RandomKeyValue" Type="Int32" />
+          <NavigationProperty Name="EmployeeDetailsOfficial" Relationship="Self.FK__RandomKey__Emplo__5CD6CB2B" FromRole="RandomKey" ToRole="EmployeeDetailsOfficial" />
+        </EntityType>
+        <Association Name="FK__EmployeeD__Count__20C1E124">
+          <End Role="a_Country" Type="Self.a_Country" Multiplicity="0..1" />
+          <End Role="EmployeeDetailsPersonal" Type="Self.EmployeeDetailsPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="a_Country">
+              <PropertyRef Name="CountryCode" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsPersonal">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Depar__1CF15040">
+          <End Role="a_DepartmentDetails" Type="Self.a_DepartmentDetails" Multiplicity="1" />
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="a_DepartmentDetails">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="DepartmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Desig__1BFD2C07">
+          <End Role="a_Designation" Type="Self.a_Designation" Multiplicity="1" />
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="a_Designation">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="Designation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Offic__1DE57479">
+          <End Role="a_OfficeDetails" Type="Self.a_OfficeDetails" Multiplicity="1" />
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="a_OfficeDetails">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="OfficeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeD__Emplo__21B6055D">
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="0..1" />
+          <End Role="EmployeeDetailsPersonal" Type="Self.EmployeeDetailsPersonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeDetailsPersonal">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Modificat__Admin__25869641">
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="0..1" />
+          <End Role="ModificationInfo" Type="Self.ModificationInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ModificationInfo">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Modificat__Emplo__267ABA7A">
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="0..1" />
+          <End Role="ModificationInfo" Type="Self.ModificationInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="ModificationInfo">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RandomKey__Emplo__5CD6CB2B">
+          <End Role="EmployeeDetailsOfficial" Type="Self.EmployeeDetailsOfficial" Multiplicity="0..1" />
+          <End Role="RandomKey" Type="Self.RandomKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeDetailsOfficial">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="RandomKey">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmployeeManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="a_Country" EntityType="Self.a_Country" />
+          <EntitySet Name="a_DepartmentDetails" EntityType="Self.a_DepartmentDetails" />
+          <EntitySet Name="a_Designation" EntityType="Self.a_Designation" />
+          <EntitySet Name="a_OfficeDetails" EntityType="Self.a_OfficeDetails" />
+          <EntitySet Name="EmployeeDetailsOfficials" EntityType="Self.EmployeeDetailsOfficial" />
+          <EntitySet Name="EmployeeDetailsPersonals" EntityType="Self.EmployeeDetailsPersonal" />
+          <EntitySet Name="ModificationInfoes" EntityType="Self.ModificationInfo" />
+          <EntitySet Name="RandomKeys" EntityType="Self.RandomKey" />
+          <AssociationSet Name="FK__EmployeeD__Count__20C1E124" Association="Self.FK__EmployeeD__Count__20C1E124">
+            <End Role="a_Country" EntitySet="a_Country" />
+            <End Role="EmployeeDetailsPersonal" EntitySet="EmployeeDetailsPersonals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Depar__1CF15040" Association="Self.FK__EmployeeD__Depar__1CF15040">
+            <End Role="a_DepartmentDetails" EntitySet="a_DepartmentDetails" />
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Desig__1BFD2C07" Association="Self.FK__EmployeeD__Desig__1BFD2C07">
+            <End Role="a_Designation" EntitySet="a_Designation" />
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Offic__1DE57479" Association="Self.FK__EmployeeD__Offic__1DE57479">
+            <End Role="a_OfficeDetails" EntitySet="a_OfficeDetails" />
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeD__Emplo__21B6055D" Association="Self.FK__EmployeeD__Emplo__21B6055D">
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficials" />
+            <End Role="EmployeeDetailsPersonal" EntitySet="EmployeeDetailsPersonals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Modificat__Admin__25869641" Association="Self.FK__Modificat__Admin__25869641">
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficials" />
+            <End Role="ModificationInfo" EntitySet="ModificationInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Modificat__Emplo__267ABA7A" Association="Self.FK__Modificat__Emplo__267ABA7A">
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficials" />
+            <End Role="ModificationInfo" EntitySet="ModificationInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RandomKey__Emplo__5CD6CB2B" Association="Self.FK__RandomKey__Emplo__5CD6CB2B">
+            <End Role="EmployeeDetailsOfficial" EntitySet="EmployeeDetailsOfficials" />
+            <End Role="RandomKey" EntitySet="RandomKeys" />
+          </AssociationSet>
+          <FunctionImport Name="AddModificationInfo">
+            <Parameter Name="EmpID" Mode="In" Type="Int32" />
+            <Parameter Name="AdminID" Mode="In" Type="Int32" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+            <Parameter Name="ActionDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AddNewEmployee">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Designation" Mode="In" Type="Int32" />
+            <Parameter Name="Department" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Office" Mode="In" Type="Int32" />
+            <Parameter Name="Admin" Mode="In" Type="Boolean" />
+            <Parameter Name="Active" Mode="In" Type="Boolean" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="Int32" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Salary" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteEmployee">
+          <Parameter Name="EmpID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EmailAvailability" ReturnType="Collection(Int32)">
+          <Parameter Name="mailid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NameAvailability" ReturnType="Collection(Int32)">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddNewEmployeeDetail" ReturnType="Collection(Int32)">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Designation" Mode="In" Type="Int32" />
+            <Parameter Name="Department" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Office" Mode="In" Type="Int32" />
+            <Parameter Name="Admin" Mode="In" Type="Boolean" />
+            <Parameter Name="Active" Mode="In" Type="Boolean" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="Int32" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Salary" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmployeeManagementModelStoreContainer" CdmEntityContainer="EmployeeManagementEntities">
+          <EntitySetMapping Name="a_Country">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.a_Country">
+              <MappingFragment StoreEntitySet="a_Country">
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="a_DepartmentDetails">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.a_DepartmentDetails">
+              <MappingFragment StoreEntitySet="a_DepartmentDetails">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="a_Designation">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.a_Designation">
+              <MappingFragment StoreEntitySet="a_Designation">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="a_OfficeDetails">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.a_OfficeDetails">
+              <MappingFragment StoreEntitySet="a_OfficeDetails">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeDetailsOfficials">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.EmployeeDetailsOfficial">
+              <MappingFragment StoreEntitySet="EmployeeDetailsOfficial">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="OfficeCode" ColumnName="OfficeCode" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeDetailsPersonals">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.EmployeeDetailsPersonal">
+              <MappingFragment StoreEntitySet="EmployeeDetailsPersonal">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModificationInfoes">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.ModificationInfo">
+              <MappingFragment StoreEntitySet="ModificationInfo">
+                <ScalarProperty Name="LogNumber" ColumnName="LogNumber" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RandomKeys">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.RandomKey">
+              <MappingFragment StoreEntitySet="RandomKey">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RandomKeyValue" ColumnName="RandomKeyValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddModificationInfo" FunctionName="EmployeeManagementModel.Store.AddModificationInfo" />
+          <FunctionImportMapping FunctionImportName="AddNewEmployee" FunctionName="EmployeeManagementModel.Store.AddNewEmployee" />
+          <FunctionImportMapping FunctionImportName="DeleteEmployee" FunctionName="EmployeeManagementModel.Store.DeleteEmployee" />
+          <FunctionImportMapping FunctionImportName="EmailAvailability" FunctionName="EmployeeManagementModel.Store.EmailAvailability" />
+          <FunctionImportMapping FunctionImportName="NameAvailability" FunctionName="EmployeeManagementModel.Store.NameAvailability" />
+          <FunctionImportMapping FunctionImportName="AddNewEmployeeDetail" FunctionName="EmployeeManagementModel.Store.AddNewEmployeeDetail" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

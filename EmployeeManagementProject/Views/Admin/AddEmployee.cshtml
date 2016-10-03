@@ -1,0 +1,72 @@
+﻿@model Models.NewEmployeeViewModel
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{ 
+    List<SelectListItem> DesList = Model.DesignationList;
+    List<SelectListItem> DepList = Model.DepartmentList;
+    List<SelectListItem> OffList = Model.OfficeList;
+    List<SelectListItem> ConList = Model.CountryList;
+}
+<h3 class="text-success">@TempData["addedmessage"]</h3>
+<label class="text-primary">Enter Details</label>
+
+@using (Html.BeginForm("AddEmployee", "Admin", FormMethod.Post))
+{
+<div class="text-info">
+Name
+@Html.TextBoxFor(m => m.Name, new { style = "position:absolute; left:165px" })
+</div>
+<br/>
+<div class="text-info">
+    Male
+    @Html.RadioButtonFor(m=>m.Gender,"Male")
+    Female
+    @Html.RadioButtonFor(m=>m.Gender,"Female")
+</div>
+
+<label class="text-primary">--Official Details--</label>
+<div class="text-info">
+    Designation
+    @Html.DropDownListFor(m=>m.Designation,DesList, new { style = "position:absolute; left:165px" })
+    <br/>
+    Department
+    @Html.DropDownListFor(m=>m.Department,DepList, new { style = "position:absolute; left:165px" })
+    <br/>
+    Office
+    @Html.DropDownListFor(m=>m.Office,OffList, new { style = "position:absolute; left:165px" })
+    <br/>
+    Salary
+    @Html.TextBoxFor(m=>m.Salary, new { style = "position:absolute; left:165px" })
+    <br/>
+    Temporary Password
+    @Html.TextBoxFor(m=>m.Password, new { style = "position:absolute; left:165px" })
+    <br/>
+    Admin Yes @Html.RadioButtonFor(m => m.IsAdmin,1) No @Html.RadioButtonFor(m => m.IsAdmin,0)
+    
+</div>
+
+<label class="text-primary">--Personal Details--</label>
+<div class="text-info">
+    EmailID
+    @Html.TextBoxFor(m => m.MailID, new { style = "position:absolute; left:165px" })
+    <br/>
+    PhoneNumber
+    @Html.TextBoxFor(m => m.PhoneNumber, new { style = "position:absolute; left:165px" })
+    <br/>
+    Country
+    @Html.DropDownListFor(m => m.Country,ConList, new { style = "position:absolute; left:165px" })
+    <br/>
+    City
+    @Html.TextBoxFor(m => m.City, new { style = "position:absolute; left:165px" })
+    <br/>
+    <br/>
+</div>
+<input type="submit" value="Add" />
+<input type="reset" value="Cancel" />
+
+
+@Html.ValidationSummary()
+}
+

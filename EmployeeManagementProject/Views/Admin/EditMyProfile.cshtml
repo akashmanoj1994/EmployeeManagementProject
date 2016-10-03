@@ -1,0 +1,45 @@
+﻿@model Models.EditEmployeeSelfViewModel
+@{
+    ViewBag.Title = "EditMyProfile";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    List<SelectListItem> CntryList = Model.CountryList;
+}
+<h2 class="text-primary">Edit Details</h2>
+<h3 class="text-success">@TempData["editedmessage"]</h3>
+@using (Html.BeginForm("PostEditMyProfile", "Admin", FormMethod.Post))
+{
+    <div class="text-info">
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-2">Name</div>
+            <div class="col-md-3">@Html.TextBoxFor(m => m.Name)</div>
+        </div>
+
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-2">EmailID</div>
+            <div class="col-md-3">@Html.DisplayFor(m => m.EmailID)</div>
+        </div>
+
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-2">City</div>
+            <div class="col-md-3">@Html.TextBoxFor(m => m.City)</div>
+        </div>
+
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-2">Country</div>
+            <div class="col-md-3">@Html.DropDownListFor(m => m.Country, CntryList)</div>
+        </div>
+
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-2">PhoneNumber</div>
+            <div class="col-md-3">@Html.TextBoxFor(m => m.Phone)</div>
+        </div>
+
+        <div class="row" style="margin-top: 5px">
+            <input class="col-md-1 col-md-push-1" type="submit" value="Save"/>
+        </div>
+
+    </div>
+}
+

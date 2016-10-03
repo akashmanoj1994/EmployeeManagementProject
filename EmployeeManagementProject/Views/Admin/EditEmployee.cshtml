@@ -1,0 +1,75 @@
+﻿@model Models.EditEmployeeByAdminViewModel
+@{
+    ViewBag.Title = "EditEmployee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    List<SelectListItem> DesList = Model.DesignationList;
+    List<SelectListItem> DepList = Model.DepartmentList;
+    List<SelectListItem> OffList = Model.OfficeList;
+}
+<h2 class="text-primary">EditEmployee</h2>
+
+<h3 class="text-success">@TempData["editedmessage"]</h3>
+
+@using ( Html.BeginForm("PostEditEmployee","Admin",FormMethod.Post))
+{
+<div class="row" style="margin-top: 5px">
+    <div class="col-md-2">EmployeeID:</div>
+    <div class="col-md-3">@Html.DisplayFor(m => m.EmployeeID)</div>
+</div>
+
+<div class="row" style="margin-top: 5px">
+    <div class="col-md-2">Name:</div>
+    <div class="col-md-3">@Html.DisplayFor(m => m.Name)</div>
+</div>
+
+<div class="row" style="margin-top: 5px">
+    <div class="col-md-2">Designation:</div>
+    <div class="col-md-3">@Html.DropDownListFor(m => m.Designation, DesList)</div>
+</div>
+
+<div class="row" style="margin-top: 5px">
+    <div class="col-md-2">Department:</div>
+    <div class="col-md-3">@Html.DropDownListFor(m => m.Department, DepList)</div>
+</div>
+
+<div class="row" style="margin-top: 5px">
+    <div class="col-md-2">Office:</div>
+    <div class="col-md-3">@Html.DropDownListFor(m => m.Office, OffList)</div>
+</div>
+
+<div class="row" style="margin-top: 5px">
+    <div class="col-md-2">Admin:</div>
+    <div class="col-md-3">
+        @if (@Model.IsAdmin == false)
+        {
+            <div>
+                Yes
+                @Html.RadioButtonFor(m => m.IsAdmin, 1)
+                No
+                @Html.RadioButtonFor(m => m.IsAdmin, 0, new { Checked = "checked" })
+            </div>
+        }
+        else
+        {
+            <div>
+                Yes
+                @Html.RadioButtonFor(m => m.IsAdmin, 1, new { Checked = "checked" })
+                No
+                @Html.RadioButtonFor(m => m.IsAdmin, 0)
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row" style="margin-top: 5px">
+    <div class="col-md-2">Salary:</div>
+    <div class="col-md-3">@Html.TextBoxFor(m => m.Salary)</div>
+</div>
+
+<div class="row" style="margin-top: 5px">
+    <input type="submit" value="Save" class="col-md-1 col-md-push-1" />
+</div>
+}
+

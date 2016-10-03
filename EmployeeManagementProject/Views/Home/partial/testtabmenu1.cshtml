@@ -1,0 +1,12 @@
+﻿<h3>Menu1</h3>
+<p>Content of menu1</p>
+
+<script>
+    function showconditions(){
+        $('#conditions').load('@Url.Action("ShowFlow","Home")');
+    }
+</script>
+
+<div id="conditions"></div>
+
+<button class="btn btn-primary" onclick="showconditions()">Start</button>

@@ -1,0 +1,204 @@
+﻿@{
+    ViewBag.Title = "TestSpinner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    List<SelectListItem> DepList = (List<SelectListItem>) ViewData["dropdown"];
+}
+<script>
+    $(function () {
+        $('#showdetail').hide();
+        $("#myModal").modal('hide');
+        $('#up').click(function () {
+            $('.spinner input').val(parseInt($('.spinner input').val(), 10) + 1);
+        });
+        $('#down').click(function () {
+            $('.spinner input').val(parseInt($('.spinner input').val(), 10) - 1);
+        });
+        $('.popup').click(function () {
+            $("#showdetail").data("kendoWindow").open();
+        });
+    })
+</script>
+<script type="text/javascript">
+
+    function showpopup(e) {
+//      e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        $('#content').text(dataItem.EmailID);
+        $('#myModal').modal('show');
+        $('#yes-btn').click(function () { $('#myModal').modal('hide') });
+        $('#no-btn').click(function () { $('#myModal').modal('hide') });
+    }
+
+    function ShowDetailsAlert(Name) {
+        
+        $('#content').text(Name);
+        $('#myModal').modal('show');
+        $('#yes-btn').click(function () { $('#myModal').modal('hide') });
+        $('#no-btn').click(function () { $('#myModal').modal('hide') });
+    }
+
+</script>
+
+<style>
+    }
+
+    .spinner {
+        width: 150px;
+    }
+
+    .spinner input {
+            text-align: right;
+        }
+
+    .input-group-btn-vertical {
+        position: relative;
+        white-space: nowrap;
+        width: 1%;
+        vertical-align: middle;
+        display: table-cell;
+    }
+
+        .input-group-btn-vertical > .btn {
+            display: block;
+            float: none;
+            width: 100%;
+            max-width: 100%;
+            padding: 8px;
+            margin-left: -1px;
+            position: absolute;
+            border-radius: 0;
+        }
+
+        .input-group-btn-vertical > #up {
+            border-top-right-radius: 4px;
+            background: url(../../Pictures/up_img.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            top: 0px;
+        }
+
+        .input-group-btn-vertical > #down {
+            margin-top: -2px;
+            border-bottom-right-radius: 4px;
+            background: url(../../Pictures/down_img.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+</style>
+
+<h2>TestSpinner</h2>
+<br />
+
+<div class="container">
+    <div class="input-group spinner">
+        <input type="number" class="form-control" value="42">
+        <div class="input-group-btn-vertical">
+            <button class="btn btn-default" id="up" type="button"></button>
+            <button class="btn btn-default" id="down" type="button"></button>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+
+@(Html.Kendo().DatePicker().Name("datepicker")
+         .Value("23/08/2016")
+         .HtmlAttributes(new { style = "width: 30%" }))
+<br />
+<br />
+
+@(Html.Kendo().Grid<Models.ShowEmployeePrimaryViewModel>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+        columns.Bound(c => c.Name);
+        columns.Bound(c => c.EmployeeID);
+        columns.Bound(c => c.Department);
+        columns.Bound(c => c.Office);
+        columns.Bound(c => c.EmailID).Width(40).Title("").ClientTemplate("<span class=\"glyphicon glyphicon-eye-open\" onclick=\"ShowDetailsAlert('#=Name#')\"></span>");
+                                     
+        columns.Command(cmd => cmd.Custom("View photo")
+                                          .Click("showpopup"));
+        })
+        .HtmlAttributes(new { style = "height: 300px;" })
+        .Scrollable()
+        .ClientDetailTemplateId("template")
+        .Sortable()
+        .Pageable(pageable => pageable
+            .Refresh(true)
+            .PageSizes(true)
+            .ButtonCount(5))
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Action("GetEmployeeList", "Home"))
+            .PageSize(5))
+)
+
+<script id="template" type="text/kendo-tmpl">
+@(Html.Kendo().Grid<Models.ShowEmployeeViewModel>()
+        .Name("grid_#=EmployeeID#")
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.City);
+            columns.Bound(c => c.Country);
+            columns.Bound(c => c.Office);
+            columns.Bound(c => c.PhoneNumber);
+        })
+        .DataSource(datasource=>datasource
+        .Ajax()
+        .Read(read=> read.Action("GetOfficeList","Home",new { EmployeeID="#=EmployeeID#"}))
+        .PageSize(8))
+        .ToClientTemplate()
+)
+</script>
+
+
+<br/>
+<br/>
+@Html.Label("Department")
+@(Html.Kendo().DropDownList()
+              .Name("mydropdown")
+              .DataTextField("Text")
+              .DataValueField("Value") 
+              .BindTo(DepList)
+              .Value("1")
+              .HtmlAttributes(new { style = "width: 30%" })
+)
+
+<div class="modal fade" id="myModal" role="dialog" style="position:absolute;top:50%;vertical-align:middle;margin:0 auto;padding:0">
+    <div class="modal-dialog" style="vertical-align:middle">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align:center">
+                <p id="content" class="text-info" width="100%" style="text-align:center">Photo here</p>
+                <button id="yes-btn">Yes</button>
+                <button id="no-btn">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <br />
+            <br />
+@(Html.Kendo().NumericTextBox().Name("numberinput")
+        .Max(100)
+        .Min(0)
+        .Spinners(true)
+        .Value(49)
+)
+<br />
+<br />
+
+<button class="popup">Show Details</button>
+
+@(Html.Kendo().Window().Name("showdetail")
+        .Title("Product details")
+        .Content(@<text>
+            <p>Name: Machine gun<br />Type: Weapon<br />Quantity: 30</p>
+        </text>)
+        .Draggable()
+        .Resizable()
+        .Width(500)
+        .Actions(actions => actions.Pin().Minimize().Maximize().Close())
+ )

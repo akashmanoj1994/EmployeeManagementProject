@@ -1,0 +1,49 @@
+﻿@model Models.ShowEmployeeViewModel
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3 class="text-primary">Profile Details</h3>
+@Html.ActionLink("Edit details", "EditMyProfile", "Admin")
+<div class="text-info">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>@Html.DisplayFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <td>EmployeeID:</td>
+            <td>@Html.DisplayFor(m => m.EmployeeID)</td>
+        </tr>
+        <tr>
+            <td>Designation: </td>
+            <td>@Html.DisplayFor(m => m.Designation)</td>
+        </tr>
+        <tr>
+            <td>Department: </td>
+            <td>@Html.DisplayFor(m => m.Department)</td>
+        </tr>
+        <tr>
+            <td>Office: </td>
+            <td>@Html.DisplayFor(m => m.Office)</td>
+        </tr>
+        <tr>
+            <td>City: </td>
+            <td>@Html.DisplayFor(m => m.City)</td>
+        </tr>
+        <tr>
+            <td>Country: </td>
+            <td>@Html.DisplayFor(m => m.Country)</td>
+        </tr>
+        <tr>
+            <td>EmailID: </td>
+            <td>@Html.DisplayFor(m => m.MailID)</td>
+        </tr>
+        <tr>
+            <td>Phone: </td>
+            <td>@Html.DisplayFor(m => m.PhoneNumber)</td>
+        </tr>   
+    </table>
+</div>
+

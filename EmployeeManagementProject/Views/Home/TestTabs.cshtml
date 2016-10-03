@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "TestTabs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TestTabs</h2>
+
+<ul class="nav nav-tabs nav-justified">
+    <li class="active"><a data-toggle="tab" href="#menu1">TAB1</a></li>
+    <li><a data-toggle="tab" href="#menu2">TAB2</a></li>
+    <li><a data-toggle="tab" href="#menu3">TAB3</a></li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">TAB4<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a data-toggle="tab" href="#menu4sub1">SUBTAB1</a></li>
+            <li><a data-toggle="tab" href="#menu4sub2">SUBTAB2</a></li>
+        </ul>
+    </li>
+</ul>
+<div class="tab-content">
+    <div id="menu1" class="tab-pane in active fade">
+        @Html.Partial("~/Views/Home/partial/testtabmenu1.cshtml")
+    </div>
+    <div id="menu2" class="tab-pane fade">
+        @Html.Partial("~/Views/Home/partial/testtabmenu2.cshtml")
+    </div>
+    <div id="menu3" class="tab-pane fade">
+        @Html.Partial("~/Views/Home/partial/testtabmenu3.cshtml")
+    </div>
+    <div id="menu4sub1" class="tab-pane fade">
+        @Html.Partial("~/Views/Home/partial/testtabmenu4.cshtml")
+    </div>
+    <div id="menu4sub2" class="tab-pane fade">
+        @Html.Partial("~/Views/Home/partial/testtabmenu5.cshtml")
+    </div> 
+</div>

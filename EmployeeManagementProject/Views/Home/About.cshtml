@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Models.DepartmentViewModel>
+@{
+    ViewBag.Title = Resources.PageTitles.AboutUs;
+}
+@using EmployeeManagementProject.App_LocalResources
+<div class="text-info">
+    <h3 class="text-primary">@AboutUs.Visionlabel</h3>
+    <span>@AboutUs.Vision</span>
+    <h3 class="text-primary">@AboutUs.Missionlabel</h3>
+    <span>@AboutUs.Mission</span>
+</div>
+<h3 class="text-primary">@AboutUs.Departments</h3>
+
+@foreach (var item in Model)
+{
+
+   <h4 class="text-primary"> @Html.DisplayFor(modelItem => item.Name)</h4>
+
+    <p class="text-info">@Html.DisplayFor(modelItem=>item.Description)</p>
+
+}

@@ -1,0 +1,9 @@
+﻿@model Models.NewEmployeeViewModel
+@{
+    ViewBag.Title = "TestEditor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TestEditor</h2>
+@Html.EditorFor(m=>m,"checkEditor")
+<br/>

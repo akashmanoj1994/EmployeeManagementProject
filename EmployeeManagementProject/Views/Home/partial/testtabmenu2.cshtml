@@ -1,0 +1,12 @@
+﻿<h3>Menu2</h3>
+<p>Content of menu2</p>
+
+<div id="data"></div>
+<button onclick="Display()">Show detail</button>
+<script>
+    var text = '{"People":[{ "Firstname": "Akash", "Lastname": "Manoj", "Place": "Attukal" },{ "Firstname": "Ajin", "Lastname": "SL", "Place": "Thirumala" }]}';
+    var obj = JSON.parse(text);
+    function Display() {
+        document.getElementById("data").innerHTML = "<br/>" + obj.People[1].Firstname + "<br/>" + obj.People[1].Lastname + "<br/>" + obj.People[1].Place;
+    }
+</script>

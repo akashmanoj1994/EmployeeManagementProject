@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="text-primary">@ViewData["welcomenote"]</h2>
+@Ajax.ActionLink("Get server time", "GetTime", "Admin", new AjaxOptions { UpdateTargetId = "timespace",InsertionMode=InsertionMode.Replace,HttpMethod="GET" })
+
+<div id="timespace"></div>
