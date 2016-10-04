@@ -35,6 +35,7 @@ namespace ClassLibrary2
         public virtual DbSet<EmployeeDetailsPersonal> EmployeeDetailsPersonals { get; set; }
         public virtual DbSet<ModificationInfo> ModificationInfoes { get; set; }
         public virtual DbSet<RandomKey> RandomKeys { get; set; }
+        public virtual DbSet<LogInfo> LogInfoes { get; set; }
     
         public virtual int AddModificationInfo(Nullable<int> empID, Nullable<int> adminID, string action, Nullable<System.DateTime> actionDate)
         {

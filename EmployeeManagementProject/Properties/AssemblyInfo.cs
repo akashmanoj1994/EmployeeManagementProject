@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
@@ -18,6 +17,9 @@ using System.Runtime.InteropServices;
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
+
+
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("a033f51c-20c1-43d0-be8b-e81e242ed39e")]

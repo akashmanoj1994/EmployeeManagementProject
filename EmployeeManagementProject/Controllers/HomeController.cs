@@ -8,11 +8,14 @@ using Models;
 using System.Net.Mail;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
+using log4net;
 
 namespace EmployeeManagementProject.Controllers
 {
     public class HomeController : Controller
     {
+        private static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// Shows home page of website
         /// </summary>
@@ -40,24 +43,39 @@ namespace EmployeeManagementProject.Controllers
         /// <returns></returns>
         public ActionResult Contact()
         {
-            EmailViewModel emailModel = new EmailViewModel();
-            emailModel.TypeDropDown.Add(new SelectListItem
-            {
-                Text = "Business",
-                Value = "Business"
-            });
-            emailModel.TypeDropDown.Add(new SelectListItem
-            {
-                Text = "Career",
-                Value = "Career",
-                Selected = true
-            });
-            emailModel.TypeDropDown.Add(new SelectListItem
-            {
-                Text = "Other",
-                Value = "Other"
-            });
 
+            //logger.Debug("Here is a debug log.");
+            //logger.Info("... and an Info log.");
+            //logger.Warn("... and a warning.");
+            
+            //logger.Fatal("... and a fatal error.");
+
+            EmailViewModel emailModel = new EmailViewModel();
+            try
+            {
+                throw new InvalidOperationException();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+            }
+            emailModel.TypeDropDown.Add(new SelectListItem
+                {
+                    Text = "Business",
+                    Value = "Business"
+                });
+            emailModel.TypeDropDown.Add(new SelectListItem
+                {
+                    Text = "Career",
+                    Value = "Career",
+                    Selected = true
+                });
+            emailModel.TypeDropDown.Add(new SelectListItem
+                {
+                    Text = "Other",
+                    Value = "Other"
+                });
+            
             List<OfficeViewModel> officeList;
             Office_BL officeLogic = new Office_BL();
             officeList = officeLogic.GetOfficeLists();

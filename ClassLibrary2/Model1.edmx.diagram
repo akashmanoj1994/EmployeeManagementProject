@@ -21,6 +21,7 @@
         <AssociationConnector Association="EmployeeManagementModel.FK__Modificat__Admin__25869641" ManuallyRouted="false" />
         <AssociationConnector Association="EmployeeManagementModel.FK__Modificat__Emplo__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="EmployeeManagementModel.FK__RandomKey__Emplo__5CD6CB2B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmployeeManagementModel.LogInfo" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

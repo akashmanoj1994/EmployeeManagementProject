@@ -62,6 +62,17 @@
           <Property Name="Salary" Type="int" Nullable="false" />
           <Property Name="EmployeeID" Type="int" />
         </EntityType>
+        <EntityType Name="LogInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogDate" Type="datetime" />
+          <Property Name="Thread" Type="varchar" MaxLength="255" />
+          <Property Name="Levels" Type="varchar" MaxLength="50" />
+          <Property Name="Logger" Type="varchar" MaxLength="255" />
+          <Property Name="LogMessage" Type="varchar" MaxLength="2000" />
+        </EntityType>
         <EntityType Name="ModificationInfo">
           <Key>
             <PropertyRef Name="LogNumber" />
@@ -204,6 +215,7 @@
           <EntitySet Name="a_OfficeDetails" EntityType="Self.a_OfficeDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeDetailsOfficial" EntityType="Self.EmployeeDetailsOfficial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeDetailsPersonal" EntityType="Self.EmployeeDetailsPersonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogInfo" EntityType="Self.LogInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ModificationInfo" EntityType="Self.ModificationInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RandomKey" EntityType="Self.RandomKey" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__EmployeeD__Count__20C1E124" Association="Self.FK__EmployeeD__Count__20C1E124">
@@ -508,7 +520,19 @@
             <Parameter Name="Phone" Mode="In" Type="String" />
             <Parameter Name="Salary" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="LogInfoes" EntityType="EmployeeManagementModel.LogInfo" />
         </EntityContainer>
+        <EntityType Name="LogInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogDate" Type="DateTime" Precision="3" />
+          <Property Name="Thread" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Levels" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Logger" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LogMessage" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -604,6 +628,18 @@
           <FunctionImportMapping FunctionImportName="EmailAvailability" FunctionName="EmployeeManagementModel.Store.EmailAvailability" />
           <FunctionImportMapping FunctionImportName="NameAvailability" FunctionName="EmployeeManagementModel.Store.NameAvailability" />
           <FunctionImportMapping FunctionImportName="AddNewEmployeeDetail" FunctionName="EmployeeManagementModel.Store.AddNewEmployeeDetail" />
+          <EntitySetMapping Name="LogInfoes">
+            <EntityTypeMapping TypeName="EmployeeManagementModel.LogInfo">
+              <MappingFragment StoreEntitySet="LogInfo">
+                <ScalarProperty Name="LogMessage" ColumnName="LogMessage" />
+                <ScalarProperty Name="Logger" ColumnName="Logger" />
+                <ScalarProperty Name="Levels" ColumnName="Levels" />
+                <ScalarProperty Name="Thread" ColumnName="Thread" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
