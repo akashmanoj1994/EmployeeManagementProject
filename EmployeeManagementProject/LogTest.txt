@@ -6,39 +6,11 @@
 2016-10-04 10:06:42,306 [8] WARN  EmployeeManagementProject.Controllers.AdminController ... and a warning.
 2016-10-04 10:06:42,306 [8] ERROR EmployeeManagementProject.Controllers.AdminController ... and an error.
 2016-10-04 10:06:42,306 [8] FATAL EmployeeManagementProject.Controllers.AdminController ... and a fatal error.
-[Header]\r\n2016-10-04 10:15:12,792 [6] INFO  EmployeeManagementProject.Controllers.AdminController ... and an Info log.
-2016-10-04 10:15:12,807 [6] WARN  EmployeeManagementProject.Controllers.AdminController ... and a warning.
-2016-10-04 10:15:12,807 [6] ERROR EmployeeManagementProject.Controllers.AdminController ... and an error.
-2016-10-04 10:15:12,822 [6] FATAL EmployeeManagementProject.Controllers.AdminController ... and a fatal error.
-2016-10-04 10:15:17,104 [5] INFO  EmployeeManagementProject.Controllers.AdminController ... and an Info log.
-2016-10-04 10:15:17,104 [5] WARN  EmployeeManagementProject.Controllers.AdminController ... and a warning.
-2016-10-04 10:15:17,104 [5] ERROR EmployeeManagementProject.Controllers.AdminController ... and an error.
-2016-10-04 10:15:17,104 [5] FATAL EmployeeManagementProject.Controllers.AdminController ... and a fatal error.
-[Header]\r\n2016-10-04 12:07:33,649 [5] INFO  EmployeeManagementProject.Controllers.AdminController ... and an Info log.
-2016-10-04 12:07:33,682 [5] WARN  EmployeeManagementProject.Controllers.AdminController ... and a warning.
-2016-10-04 12:07:33,691 [5] ERROR EmployeeManagementProject.Controllers.AdminController ... and an error.
-2016-10-04 12:07:33,696 [5] FATAL EmployeeManagementProject.Controllers.AdminController ... and a fatal error.
-2016-10-04 12:07:37,722 [5] INFO  EmployeeManagementProject.Controllers.AdminController ... and an Info log.
-2016-10-04 12:07:37,727 [5] WARN  EmployeeManagementProject.Controllers.AdminController ... and a warning.
-2016-10-04 12:07:37,729 [5] ERROR EmployeeManagementProject.Controllers.AdminController ... and an error.
-2016-10-04 12:07:37,732 [5] FATAL EmployeeManagementProject.Controllers.AdminController ... and a fatal error.
-[Header]\r\n2016-10-04 12:31:40,202 [6] INFO  EmployeeManagementProject.Controllers.AdminController ... and an Info log.
-2016-10-04 12:31:40,243 [6] WARN  EmployeeManagementProject.Controllers.AdminController ... and a warning.
-2016-10-04 12:31:40,262 [6] ERROR EmployeeManagementProject.Controllers.AdminController ... and an error.
-2016-10-04 12:31:40,270 [6] FATAL EmployeeManagementProject.Controllers.AdminController ... and a fatal error.
-2016-10-04 12:31:43,026 [6] INFO  EmployeeManagementProject.Controllers.AdminController ... and an Info log.
-2016-10-04 12:31:43,030 [6] WARN  EmployeeManagementProject.Controllers.AdminController ... and a warning.
-2016-10-04 12:31:43,033 [6] ERROR EmployeeManagementProject.Controllers.AdminController ... and an error.
-2016-10-04 12:31:43,035 [6] FATAL EmployeeManagementProject.Controllers.AdminController ... and a fatal error.
-[Header]\r\n2016-10-04 12:50:16,902 [8] INFO  EmployeeManagementProject.Controllers.HomeController ... and an Info log.
-2016-10-04 12:50:16,953 [8] WARN  EmployeeManagementProject.Controllers.HomeController ... and a warning.
-2016-10-04 12:50:16,955 [8] ERROR EmployeeManagementProject.Controllers.HomeController ... and an error.
-2016-10-04 12:50:16,958 [8] FATAL EmployeeManagementProject.Controllers.HomeController ... and a fatal error.
-2016-10-04 12:50:31,546 [8] INFO  EmployeeManagementProject.Controllers.HomeController ... and an Info log.
-2016-10-04 12:50:31,550 [8] WARN  EmployeeManagementProject.Controllers.HomeController ... and a warning.
-2016-10-04 12:50:31,552 [8] ERROR EmployeeManagementProject.Controllers.HomeController ... and an error.
-2016-10-04 12:50:31,556 [8] FATAL EmployeeManagementProject.Controllers.HomeController ... and a fatal error.
-[Header]\r\n2016-10-04 14:17:29,484 [5] ERROR EmployeeManagementProject.Controllers.HomeController System.InvalidOperationException: Test Exception
-   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 56
-2016-10-04 14:17:53,618 [6] ERROR EmployeeManagementProject.Controllers.HomeController System.InvalidOperationException: Test Exception
-   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 56
+[Header]\r\n2016-10-06 14:48:32,651 [5] ERROR EmployeeManagementProject.Controllers.HomeController System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 52
+2016-10-06 14:48:38,044 [5] ERROR EmployeeManagementProject.Controllers.HomeController System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 52
+2016-10-06 14:48:43,109 [5] ERROR EmployeeManagementProject.Controllers.HomeController System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 52
+2016-10-06 14:48:46,056 [6] ERROR EmployeeManagementProject.Controllers.HomeController System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 52

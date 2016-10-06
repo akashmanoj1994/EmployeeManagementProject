@@ -8,14 +8,17 @@ using Models;
 using System.Net.Mail;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
-using log4net;
+using EmployeeManagementProject.Interfaces;
 
 namespace EmployeeManagementProject.Controllers
 {
     public class HomeController : Controller
     {
-        private static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private readonly ILogger logger;
+        public HomeController(ILogger logger)
+        {
+            this.logger = logger;
+        }
         /// <summary>
         /// Shows home page of website
         /// </summary>
@@ -43,21 +46,14 @@ namespace EmployeeManagementProject.Controllers
         /// <returns></returns>
         public ActionResult Contact()
         {
-
-            //logger.Debug("Here is a debug log.");
-            //logger.Info("... and an Info log.");
-            //logger.Warn("... and a warning.");
-            
-            //logger.Fatal("... and a fatal error.");
-
             EmailViewModel emailModel = new EmailViewModel();
             try
             {
                 throw new InvalidOperationException();
             }
             catch (Exception ex)
-            {
-                logger.Error(ex);
+            {             
+                logger.LogError(""+ex, System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             }
             emailModel.TypeDropDown.Add(new SelectListItem
                 {

@@ -28,6 +28,11 @@ namespace EmployeeManagementProject
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/cube").Include(
+                    "~/Content/cube.css",
+                    "~/Content/zoom.css"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/kendo.all.min.js",
                 // "~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler

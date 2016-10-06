@@ -1,0 +1,81 @@
+﻿.card {
+  margin: auto;
+  position: relative;
+  height: 400px;
+  width: 500px;
+}
+
+
+
+.target{
+  margin: auto;
+  position: absolute;
+  top: 400px;
+  height: 50px;
+  width: 100%;
+}
+
+.car {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 50px;
+  width: 50px;
+  opacity: 0.9;
+  background-color: #000;
+  border: solid 1px #eeeeee;
+  color: #ffffff;
+  left:0px;
+  animation: carmove 5s infinite
+}
+
+@keyframes carmove{
+    from{left:0px}
+    to{ left:100%}
+}
+
+.card > div {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 100px;
+  width: 100px;
+  opacity: 0.9;
+  background-color: #000;
+  border: solid 1px #eeeeee;
+  color: #ffffff;
+}
+
+.card1{
+    left:0px
+}
+.card2{
+    left:100px
+}
+.card3{
+    left:200px
+}
+.card4{
+    left:300px
+}
+
+.card1:hover{
+  animation: mymove 1s 
+}
+
+.card2:hover{
+  animation: mymove 1s 
+}
+
+.card3:hover{
+  animation: mymove 1s 
+}
+
+.card4:hover{
+  animation: mymove 1s 
+}
+
+@keyframes mymove{
+    from{top:0px}
+    to{ top:100px}
+}
