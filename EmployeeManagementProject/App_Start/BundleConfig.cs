@@ -26,8 +26,12 @@ namespace EmployeeManagementProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/cube.css"));
+                      "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/cube").Include(
+                    "~/Content/cube.css",
+                    "~/Content/zoom.css"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/kendo.all.min.js",
