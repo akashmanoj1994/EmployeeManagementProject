@@ -12,6 +12,7 @@ namespace EmployeeManagementProject.LoggerClasses
         private static ILog logger;
         public void LogError(string errormessage,string caller,string callermethod)
         {
+            LogicalThreadContext.Properties["logmethod"] = callermethod;
             logger = LogManager.GetLogger(caller);
             logger.Error(errormessage);
         }
