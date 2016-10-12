@@ -13,6 +13,7 @@ namespace EmployeeManagementProject.App_Start
     using global::Ninject.Web.Common;
     using global::Ninject;
     using System.Reflection;
+    using ninjectresolver;
 
     public static class NinjectWebCommon 
     {
@@ -64,7 +65,8 @@ namespace EmployeeManagementProject.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Load(Assembly.GetExecutingAssembly());
+            //kernel.Load(Assembly.GetExecutingAssembly());
+            kernel.Load(new bindinglog4net());
         }        
     }
 }
