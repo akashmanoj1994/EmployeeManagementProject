@@ -14,3 +14,5 @@
    at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 52
 2016-10-06 14:48:46,056 [6] ERROR EmployeeManagementProject.Controllers.HomeController System.InvalidOperationException: Operation is not valid due to the current state of the object.
    at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 52
+[Header]\r\n2016-10-12 12:31:09,986 [6] ERROR EmployeeManagementProject.Controllers.HomeController System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 52

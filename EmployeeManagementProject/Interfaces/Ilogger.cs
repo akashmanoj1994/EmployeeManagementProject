@@ -8,6 +8,6 @@ namespace EmployeeManagementProject.Interfaces
 {
     public interface ILogger
     {
-        void LogError(string errormessage,Type caller);
+        void LogError(string errormessage,string caller,string callermethod);
     }
 }

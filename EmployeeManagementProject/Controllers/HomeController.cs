@@ -56,8 +56,9 @@ namespace EmployeeManagementProject.Controllers
                 string classname = this.GetType().FullName;
                 //string methodname = ex.TargetSite.Name;
                 //string classname = ex.TargetSite.ReflectedType.Name;
-                //string methodname = new StackTrace(ex).GetFrame(0).GetMethod().Name; 
-                logger.LogError("" + ex,classname);
+                //string methodname = new StackTrace(ex).GetFrame(0).GetMethod().Name;
+                string methodname = nameof(Contact);
+                logger.LogError("" + ex,classname,methodname);
             }
             emailModel.TypeDropDown.Add(new SelectListItem
                 {

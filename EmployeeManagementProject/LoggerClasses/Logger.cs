@@ -10,7 +10,7 @@ namespace EmployeeManagementProject.LoggerClasses
     public class Logger:ILogger
     {
         private static ILog logger;
-        public void LogError(string errormessage,Type caller)
+        public void LogError(string errormessage,string caller,string callermethod)
         {
             logger = LogManager.GetLogger(caller);
             logger.Error(errormessage);
