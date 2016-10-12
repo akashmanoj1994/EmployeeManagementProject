@@ -52,8 +52,12 @@ namespace EmployeeManagementProject.Controllers
                 throw new InvalidOperationException();
             }
             catch (Exception ex)
-            {             
-                logger.LogError(""+ex, System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            {
+                string classname = this.GetType().FullName;
+                //string methodname = ex.TargetSite.Name;
+                //string classname = ex.TargetSite.ReflectedType.Name;
+                //string methodname = new StackTrace(ex).GetFrame(0).GetMethod().Name; 
+                logger.LogError("" + ex,classname);
             }
             emailModel.TypeDropDown.Add(new SelectListItem
                 {
