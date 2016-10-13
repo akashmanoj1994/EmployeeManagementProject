@@ -51,6 +51,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InterfaceProject\InterfaceProject.csproj">
+      <Project>{9b368246-2ab0-4488-9fe8-836061427e75}</Project>
+      <Name>InterfaceProject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\log4netproject\log4netproject.csproj">
       <Project>{246eeb07-2535-4594-96a5-619f9585a1d7}</Project>
       <Name>log4netproject</Name>

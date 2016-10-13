@@ -1,4 +1,5 @@
-﻿using log4netproject;
+﻿using InterfaceProject;
+using log4netproject;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;

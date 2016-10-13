@@ -8,7 +8,7 @@ using Models;
 using System.Net.Mail;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
-using EmployeeManagementProject.Interfaces;
+using InterfaceProject;
 
 namespace EmployeeManagementProject.Controllers
 {
