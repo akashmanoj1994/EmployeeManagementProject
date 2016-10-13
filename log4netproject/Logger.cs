@@ -13,7 +13,7 @@ namespace log4netproject
         private static ILog logger;
         public Logger()
         {
-            XmlConfigurator.Configure(/*new System.IO.FileInfo("C:\\Users\\Akash Manoj\\Documents\\Visual Studio 2015\\Projects\\EmployeeManagementProject\\log4netproject\\App.config")*/);
+            XmlConfigurator.Configure(new System.IO.FileInfo("C:\\Users\\Akash Manoj\\Documents\\Visual Studio 2015\\Projects\\EmployeeManagementProject\\log4netproject\\App.config"));
         }
         public void LogError(string errormessage, string caller,string callermethod)
         {
