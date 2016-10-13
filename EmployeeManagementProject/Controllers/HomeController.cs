@@ -54,10 +54,12 @@ namespace EmployeeManagementProject.Controllers
             catch (Exception ex)
             {
                 string classname = this.GetType().FullName;
+
                 //string methodname = ex.TargetSite.Name;
                 //string classname = ex.TargetSite.ReflectedType.Name;
                 //string methodname = new StackTrace(ex).GetFrame(0).GetMethod().Name;
                 string methodname = nameof(Contact);
+
                 logger.LogError("" + ex,classname,methodname);
             }
             emailModel.TypeDropDown.Add(new SelectListItem
