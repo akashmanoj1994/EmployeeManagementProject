@@ -14,16 +14,14 @@ namespace BusinessLogicLayer.Tests
         [TestMethod()]
         public void MatchPasswordTest()
         {
-
-
             ResetPasswordViewModel mdl = new ResetPasswordViewModel();
             mdl.UserID = 1;
             mdl.Password1= "haithere";
-            mdl.Password2= "haitHereTHere";
-            
+            mdl.Password2= "haitHere";
+            bool actual = true;
 
             ResetPassword_BL obj = new ResetPassword_BL();
-        
+           // Assert.AreEqual(actual, result, "successfull");
         }
     }
 }
