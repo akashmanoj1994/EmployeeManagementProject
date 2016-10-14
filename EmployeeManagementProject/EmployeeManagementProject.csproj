@@ -632,6 +632,14 @@
       <Project>{3d84770c-69be-442a-86e5-a93791a5f7da}</Project>
       <Name>Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InterfaceProject\InterfaceProject.csproj">
+      <Project>{9b368246-2ab0-4488-9fe8-836061427e75}</Project>
+      <Name>InterfaceProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ninjectresolver\ninjectresolver.csproj">
+      <Project>{a4eae3b9-d207-4603-8577-3763235e6869}</Project>
+      <Name>ninjectresolver</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{6f9dd7eb-b7cd-4a6a-a500-1b49dfc5eb3d}</Project>
       <Name>Utilities</Name>

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeManagementProject.Interfaces
+namespace InterfaceProject
 {
     public interface ILogger
     {
-        void LogError(string errormessage,string caller,string callermethod);
+        void LogError(string errormessage, string caller,string callermethod);
     }
 }
