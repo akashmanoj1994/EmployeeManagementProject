@@ -26,6 +26,7 @@ namespace log4netproject
         }
         public void LogError(string errormessage, string caller,string callermethod)
         {
+            //additional parameter logmethod
             LogicalThreadContext.Properties["logmethod"] = callermethod;
             logger = LogManager.GetLogger(caller);
             logger.Error(errormessage);
