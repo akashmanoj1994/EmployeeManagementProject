@@ -3,6 +3,7 @@ using log4net;
 using log4net.Config;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,15 @@ namespace log4netproject
     {
         private static ILog logger;
         public Logger()
+        {       
+            XmlConfigurator.Configure(new FileInfo(GetConfigPath()));
+        }
+        string GetConfigPath()
         {
-            XmlConfigurator.Configure(new System.IO.FileInfo("C:\\Users\\Akash Manoj\\Documents\\Visual Studio 2015\\Projects\\EmployeeManagementProject\\log4netproject\\App.config"));
+            var webproject = AppDomain.CurrentDomain.BaseDirectory;
+            var solutionpath = Directory.GetParent(webproject).Parent.FullName;
+            var configpath = solutionpath + "\\log4netproject\\App.config";
+            return configpath;
         }
         public void LogError(string errormessage, string caller,string callermethod)
         {
