@@ -18,6 +18,7 @@ namespace log4netproject
         }
         string GetConfigPath()
         {
+            //try to do as relative path
             var webproject = AppDomain.CurrentDomain.BaseDirectory;
             var solutionpath = Directory.GetParent(webproject).Parent.FullName;
             var configpath = solutionpath + "\\log4netproject\\App.config";
