@@ -1,6 +1,6 @@
-﻿<h3>Menu1</h3>
+﻿@Styles.Render("~/Content/enlarge")
+<h3>Menu1</h3>
 <p>Content of menu1</p>
-
 <script>
     function showconditions(){
         $('#conditions').load('@Url.Action("ShowFlow","Home")');
@@ -10,3 +10,10 @@
 <div id="conditions"></div>
 
 <button class="btn btn-primary" onclick="showconditions()">Start</button>
+
+<div id="field">
+    <img src="~/Pictures/Home.jpg" id="photo" />
+    <img src="~/Pictures/Home2.jpg" id="photo2" />
+    <div id="parade">
+    </div>
+</div>

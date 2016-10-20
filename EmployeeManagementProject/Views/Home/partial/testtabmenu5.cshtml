@@ -1,2 +1,29 @@
-﻿<h3>Menu4</h3>
+﻿@Scripts.Render("~/bundles/angular")
+
+<h3>Menu4</h3>
 <p>Content of menu4 submenu2</p>
+
+<div ng-app="myapp">
+    <div ng-controller="mycontroller">
+        
+        <h3>Odd wins point</h3>
+            <h1 ng-mousemove="count=count+1" ng-mouseleave="SetWinLoss()" style="width:10%"> {{ count }} </h1>
+            <br />
+            <p>Wins: <span> {{ wincount }} </span></p>
+            <p>Losses: <span> {{ losscount }} </span></p>
+    </div>
+</div>
+
+<script>
+    angular.module('myapp',[]).controller('mycontroller', function ($scope) {
+        $scope.count = 0;
+        $scope.wincount = 0;
+        $scope.losscount = 0;
+        $scope.SetWinLoss = function () {
+            if ($scope.count % 2 == 0)
+                $scope.losscount = $scope.losscount + 1;
+            else
+                $scope.wincount = $scope.wincount + 1;
+        }
+    });
+</script>

@@ -34,6 +34,16 @@ namespace EmployeeManagementProject.Controllers
         /// <returns></returns>
         public ActionResult About()
         {
+            try
+            {
+                throw new NullReferenceException();
+            }
+            catch(Exception ex)
+            {
+                string classname = this.GetType().FullName;
+                string methodname = nameof(About);
+                logger.LogError("" + ex, classname, methodname);
+            }
             List<DepartmentViewModel> departmentList;
             Department_BL departmentLogic = new Department_BL();
             departmentList = departmentLogic.GetDepartmentLists();

@@ -19,3 +19,15 @@
 [Header]
 2016-10-12 12:37:13,209 [5] ERROR EmployeeManagementProject.Controllers.HomeController Contact System.InvalidOperationException: Operation is not valid due to the current state of the object.
    at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 52
+[Header]
+2016-10-18 09:55:17,718 [5] ERROR EmployeeManagementProject.Controllers.HomeController Contact System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 62
+[Header]
+2016-10-18 11:44:59,749 [6] ERROR EmployeeManagementProject.Controllers.HomeController Contact System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 62
+[Header]
+2016-10-18 12:27:01,431 [5] ERROR EmployeeManagementProject.Controllers.HomeController Contact System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 62
+[Header]
+2016-10-18 13:06:43,272 [6] ERROR EmployeeManagementProject.Controllers.HomeController Contact System.InvalidOperationException: Operation is not valid due to the current state of the object.
+   at EmployeeManagementProject.Controllers.HomeController.Contact() in C:\Users\Akash Manoj\Documents\Visual Studio 2015\Projects\EmployeeManagementProject\EmployeeManagementProject\Controllers\HomeController.cs:line 62

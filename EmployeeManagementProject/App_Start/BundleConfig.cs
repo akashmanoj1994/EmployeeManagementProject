@@ -24,6 +24,10 @@ namespace EmployeeManagementProject
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new StyleBundle("~/bundles/angular").Include(
+                "~/Scripts/angular.js"
+                ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
@@ -32,6 +36,11 @@ namespace EmployeeManagementProject
                     "~/Content/cube.css",
                     "~/Content/zoom.css"
                 ));
+
+            bundles.Add(new StyleBundle("~/Content/enlarge").Include(
+                    "~/Content/enlarge.css"
+                ));
+
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/kendo.all.min.js",

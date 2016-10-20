@@ -1,0 +1,55 @@
+﻿    #photo{
+        position:absolute;
+        left:15%;
+        top:35%;
+        height:100px;
+        width: 100px;
+        transition-property: width,height,transform;
+        transition-duration: 2s;
+        transition-timing-function: ease;
+    }
+    #photo:hover{
+        height:200px;
+        width:200px;
+        transform: rotate(360deg);
+        z-index:1;
+    }
+    #photo2{
+        position:absolute;
+        left:50%;
+        top:35%;
+        height:100px;
+        width: 100px;
+        transition-property: width,height,transform;
+        transition-duration: 2s;
+        transition-timing-function: ease;
+    }
+    #photo2:Active{
+        height:200px;
+        width:200px;
+        transform: rotate(360deg);
+    }
+
+    #field{
+        border: 2px solid;
+        position:relative;
+        height: 400px;
+        width: 500px;
+        resize:both;
+        overflow:auto;
+    }
+    #parade{
+        position: absolute;
+        height:50px;
+        width:50px;
+        animation-name: parading;
+        animation-duration:5s;
+        animation-iteration-count:infinite;
+    }
+    @keyframes parading{
+        0%{background-color:silver;left:5%;top:5%}
+        25%{background-color:cadetblue;left:85%;top:5%}
+        50%{background-color:lightslategray;left:85%;top:85%}
+        75%{background-color:darkolivegreen;left:5%;top:85%}
+        100%{background-color:silver;left:5%;top:5%}
+    }
