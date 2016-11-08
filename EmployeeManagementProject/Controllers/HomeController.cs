@@ -302,6 +302,7 @@ namespace EmployeeManagementProject.Controllers
         public ActionResult TestDisplay()
         {
             ViewProfile_BL bl = new ViewProfile_BL();
+            //t1
             ShowEmployeeViewModel model = bl.GetProfile(10);
             return View();
 
